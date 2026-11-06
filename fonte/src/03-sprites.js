@@ -546,7 +546,7 @@ async function buildSprites(onProgress) {
     for (let i = 0; i < def.n; i++) SPRITES[k].push(def.make(i, rng));
     done++;
     onProgress(done / keys.length);
-    await new Promise(r => requestAnimationFrame(r));
+    await new Promise(r => setTimeout(r, 0));
   }
 }
 

@@ -673,7 +673,7 @@ function generateField(onProgress) {
         row++;
       }
       onProgress(row / FW);
-      if (row < FW) { requestAnimationFrame(step); return; }
+      if (row < FW) { setTimeout(step, 0); return; }
       // borda replicada (evita costura no upscale)
       for (let i = 0; i < W2; i++) {
         for (const [a, b] of [[[i, 0], [clamp(i, 1, FW), 1]], [[i, W2 - 1], [clamp(i, 1, FW), FW]], [[0, i], [1, clamp(i, 1, FW)]], [[W2 - 1, i], [FW, clamp(i, 1, FW)]]]) {
@@ -1402,7 +1402,7 @@ async function buildSprites(onProgress) {
     for (let i = 0; i < def.n; i++) SPRITES[k].push(def.make(i, rng));
     done++;
     onProgress(done / keys.length);
-    await new Promise(r => requestAnimationFrame(r));
+    await new Promise(r => setTimeout(r, 0));
   }
 }
 
@@ -4630,7 +4630,7 @@ async function boot(data) {
   initWaterPts();
   setLoad(0.9);
   $('loadTxt').textContent = 'Acendendo a fogueira…';
-  await new Promise(r => requestAnimationFrame(r));
+  await new Promise(r => setTimeout(r, 0));
   for (const [cx, cy] of [[3, 3], [4, 3], [3, 4], [4, 4]]) getChunk(cx, cy, true);
   setLoad(1);
   $('loadWrap').hidden = true; $('menu').hidden = false;

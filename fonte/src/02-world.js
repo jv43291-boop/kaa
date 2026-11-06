@@ -162,7 +162,7 @@ function generateField(onProgress) {
         row++;
       }
       onProgress(row / FW);
-      if (row < FW) { requestAnimationFrame(step); return; }
+      if (row < FW) { setTimeout(step, 0); return; }
       // borda replicada (evita costura no upscale)
       for (let i = 0; i < W2; i++) {
         for (const [a, b] of [[[i, 0], [clamp(i, 1, FW), 1]], [[i, W2 - 1], [clamp(i, 1, FW), FW]], [[0, i], [1, clamp(i, 1, FW)]], [[W2 - 1, i], [FW, clamp(i, 1, FW)]]]) {

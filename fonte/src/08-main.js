@@ -295,7 +295,7 @@ async function boot(data) {
   initWaterPts();
   setLoad(0.9);
   $('loadTxt').textContent = 'Acendendo a fogueira…';
-  await new Promise(r => requestAnimationFrame(r));
+  await new Promise(r => setTimeout(r, 0));
   for (const [cx, cy] of [[3, 3], [4, 3], [3, 4], [4, 4]]) getChunk(cx, cy, true);
   setLoad(1);
   $('loadWrap').hidden = true; $('menu').hidden = false;
